@@ -19,4 +19,4 @@ use App\Http\Controllers\UserController;
 //     return view('welcome');
 // });
 
-Route::get('/prueba', [UserController::class, 'index']);
+ Route::get('/', [UserController::class, 'index']);
