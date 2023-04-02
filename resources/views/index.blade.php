@@ -20,7 +20,10 @@
             </thead>
             <tbody>
                 <tr>
-                <th scope="row">1</th>
+                @foreach ($leads as $lead)
+                    <?php dd($lead); ?>
+                @endforeach
+                <!-- <th scope="row">1</th>
                     <td>Mark</td>
                     <td>Otto</td>
                     <td>@mdo</td>
@@ -36,7 +39,7 @@
                     <td>Larry</td>
                     <td>the Bird</td>
                     <td>@twitter</td>
-                </tr>
+                </tr> -->
             </tbody>
         </table>
     </body>
