@@ -7,41 +7,32 @@
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     </head>
     <body>
-     <h1>Prueba</h1>
-     <button type="button" class="btn btn-primary">Primary</button>
-        <table class="table">
-            <thead>
-                <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">First</th>
-                    <th scope="col">Last</th>
-                    <th scope="col">Handle</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                @foreach ($leads as $lead)
-                    <?php dd($lead); ?>
-                @endforeach
-                <!-- <th scope="row">1</th>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
-                </tr>
-                <tr>
-                <th scope="row">2</th>
-                    <td>Jacob</td>
-                    <td>Thornton</td>
-                    <td>@fat</td>
-                </tr>
-                <tr>
-                <th scope="row">3</th>
-                    <td>Larry</td>
-                    <td>the Bird</td>
-                    <td>@twitter</td>
-                </tr> -->
-            </tbody>
-        </table>
+
+<div class="card">
+    <h5 class="card-header">Laravel</h5>
+        <div class="card-body">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Id</th>
+                            <th scope="col">Title</th>
+                            <th scope="col">summary</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($leads as $lead)
+                        <tr>
+                            <td> {{$lead->userId}} <td>
+                            <td> {{$lead->title}} <td>
+                            <td> {{$lead->body}} <td>
+                        </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
+        </div>      
+        {{ $leads->links() }}
     </body>
+  
 </html>
 <script src="{{ asset('js/app.js') }}"></script>

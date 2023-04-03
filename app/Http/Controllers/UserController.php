@@ -3,35 +3,32 @@
 namespace App\Http\Controllers;
 
 use App\Models\Clients;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
-use Illuminate\Http\Resources\Json\ResourceCollection;
-use  Illuminate\Support\Collection;
-use App\Utils\PaginateCollection;
-
-
+use Illuminate\Support\Facades\DB;
 
 class UserController extends Controller
 {
-  
-    public function index(){
-      $clients = Http::get('https://jsonplaceholder.typicode.com/posts');
-      //alimento modelo con los datos del JSON
-      $clients=$clients->object();
-      //Alimento modelo con los datos del JSON
-      
-foreach( $clients as  $client){
-      $clients = new Clients;
-      $clients->id = $clients->id;
-      $clients->title = $clients->title;
-      $clients->body = $clients->body;
-      $clients->userId = $clients->userId;
-      $clients->save();
-    }
-      $cli=$clients->pagintae(5);
-      //Devuelvo el modelo paginao
-      return view("index",['leads'=> $cli]);
+
+  public function index()
+  {
+    $clients = Http::get('https://jsonplaceholder.typicode.com/posts');
+    //alimento modelo con los datos del JSON
+    $clients = $clients->object();
+    //Alimento modelo con los datos del JSON
+    //Control de llenadp
+    if (clients::all() == Null) {
+      foreach ($clients as  $cli) {
+        $clients = new Clients;
+        $clients->id = $cli->id;
+        $clients->title = $cli->title;
+        $clients->body = $cli->body;
+        $clients->userId = $cli->userId;
+        $clients->save();
+      }
     }
 
-
+    $cli=DB::table('clients')->paginate(5);
+    //Devuelvo el modelo paginao
+    return view("index", ['leads' => $cli]);
+  }
 }

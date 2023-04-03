@@ -14,7 +14,7 @@ class Clients extends Model
      * @var array<int, string>
      */
     protected $table = 'clients';
-
+    public $timestamps = false;
     protected $fillable = [
         'id',
         'userId',
